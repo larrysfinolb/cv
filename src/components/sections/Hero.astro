@@ -1,0 +1,181 @@
+---
+import { basics } from '@cv';
+import Section from '@/components/Section.astro';
+import MailIcon from '@/icons/MailIcon.astro';
+import PhoneIcon from '@/icons/PhoneIcon.astro';
+import WorldIcon from '@/icons/WorldIcon.astro'; 
+import GitHubIcon from '@/icons/GitHubIcon.astro';
+import LinkedInIcon from '@/icons/LinkedInIcon.astro';
+import XIcon from '@/icons/XIcon.astro';
+
+const { name, label, image, location, profiles, phone, email } = basics;
+const { city, region } = location;
+
+const SOCIAL_ICONS: Record<string, any> = {
+  GitHub: GitHubIcon,
+  LinkedIn: LinkedInIcon,
+  X: XIcon,
+}
+
+const printInfo = [email,phone].filter(Boolean).join(' | ');
+---
+
+<Section>
+  <div class='container'>
+    <div class='info'>
+      <h1>{name}</h1>
+      <h2>{label}</h2>
+      <span class='location'>
+        <WorldIcon />
+        {city}, {region}
+      </span>
+      <footer class='print'>
+        {printInfo}
+      </footer>
+      <footer class='no-print'>
+        {
+          email && (
+            <a
+            href={`mailto:${email}`}
+            title={`Email ${name} at ${email}`}
+            target='_blank'
+            rel='noopener noreferrer'
+            >
+              <MailIcon />
+            </a>
+            )
+          }
+          {
+            phone && (
+              <a
+              href={`tel:${phone}`}
+              title={`Call ${name} at ${phone}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              >
+                <PhoneIcon />
+              </a>
+            )
+          }
+          {
+            profiles.map(({ network, url }) => {
+              const Icon = SOCIAL_ICONS[network];
+
+              return (
+                <a
+                href={url}
+                title={`Connect with ${name} on ${network}`}
+                target='_blank'
+                rel='noopener noreferrer'
+                >
+                  <Icon />
+                </a>
+              )
+            })
+          }
+      </footer>
+    </div>
+    <figure>
+      <img src={image} alt={name} />
+    </figure>
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-right: 32px;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    color: #444;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-wrao: balance;
+  }
+
+  img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 128px;
+    border-radius: 16px;
+  }
+
+  span {
+    color: #666;
+    display: flex;
+    align-items: center:
+    gap: .25rem;
+    font-size: .85rem;
+    letter-spacing: -0.05px;
+  }
+
+  footer {
+    color: #555;
+    font-size: .65rem;
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  footer a {
+    color: #777;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    padding: 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    transition: all .3s ease;
+  }
+
+  footer a:hover {
+    background: #eee; 
+    border: 1px solid #ddd;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column-reverse;
+    }
+
+    .info {
+      justify-content: center;
+      align-items: center;
+      padding-right: 0;
+      text-align: center;
+    }
+
+    figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-wrap: balance;
+    }
+  }
+</style>

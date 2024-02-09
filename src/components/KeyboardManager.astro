@@ -1,0 +1,181 @@
+---
+import { basics } from '@cv';
+
+const { profiles } = basics;
+
+const profilesInfo = profiles.map(({ network, url }) => {
+  const firstLetter = network[0].toUpperCase();
+
+  return {
+    id: network,
+    section: 'Social',
+    title: `View ${network}`,
+    url,
+    hotkey: `ctrl+${firstLetter}`,
+  };
+});
+---
+
+<footer id='normal-footer' class='no-print'>
+  Press <kbd>ctrl</kbd> + <kbd>K</kbd> to open the command palette
+</footer>
+
+<div id='footer-button' class='no-print'>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    class='icon icon-tabler icon-tabler-command'
+    width='32'
+    height='32'
+    viewBox='0 0 24 24'
+    stroke-width='1.5'
+    stroke='#777'
+    fill='none'
+    stroke-linecap='round'
+    stroke-linejoin='round'
+  >
+    <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+    <path d='M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10'></path>
+  </svg>
+</div>
+
+<ninja-keys data-info={JSON.stringify(profilesInfo)} placeholder='Search command' hideBreadcrumbs></ninja-keys>
+
+<script>
+  import 'ninja-keys';
+
+  interface Info {
+    id: string;
+    section: string;
+    title: string;
+    url: string;
+    icon: string;
+    hotkey: string;
+    handler?: () => void;
+  }
+
+  interface NinjaKeysElement extends HTMLElement {
+    data: Info[];
+  }
+
+  const ninja = document.querySelector<NinjaKeysElement>('ninja-keys')!;
+  const footerButton = document.getElementById('footer-button');
+
+  footerButton?.addEventListener('click', () => {
+    var event = new KeyboardEvent('keydown', {
+      key: 'K',
+      code: 'KeyK',
+      keyCode: 75,
+      which: 75,
+      ctrlKey: true,
+      altKey: false,
+      shiftKey: false,
+      metaKey: false,
+    });
+
+    document.dispatchEvent(event);
+  });
+
+  if (ninja != null) {
+    const info = ninja.getAttribute('data-info') ?? '[]';
+    const parsedInfo = JSON.parse(info);
+
+    const data = parsedInfo.map(({ url, hotkey, icon, id, section, title }: Info) => {
+      return {
+        id,
+        title,
+        icon,
+        hotkey,
+        section,
+        handler: () => {
+          window.open(url, '_blank');
+        },
+      };
+    });
+
+    ninja.data = [
+      {
+        id: 'print',
+        title: 'Print',
+        hotkey: 'ctrl+P',
+        section: 'Actions',
+        handler: () => {
+          window.print();
+        },
+      },
+      ...data,
+    ];
+  }
+</script>
+
+<style>
+  @media print {
+    ninja-keys {
+      display: none !important;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 601px) {
+    #normal-footer {
+      display: block;
+    }
+
+    #footer-button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #normal-footer {
+      display: none;
+    }
+
+    #footer-button {
+      background: #fff;
+      position: fixed;
+      border: 1px solid #eee;
+      right: 10px;
+      bottom: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+
+  footer {
+    background: #fdfdfd;
+    border-top: 1px solid #eee;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding-block: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+
+    view-timeline-name: --revealing;
+    view-timeline-axis: block;
+
+    animation: linear 0.3s fadeIn;
+    animation-timeline: --revealing;
+    animation-range: entry 100% cover 10%;
+  }
+
+  kbd {
+    background: #eee;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+</style>

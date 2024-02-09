@@ -1,0 +1,155 @@
+{
+  "basics": {
+    "name": "Larry Finol",
+    "label": "Full-Stack Developer",
+    "image": "/me.webp",
+    "email": "larrysfinolb@gmail.com",
+    "phone": "+58 4146096840",
+    "url": "https://larrysfinolb.github.io/",
+    "summary": "I am Larry Finol, a Software Engineer passionate about web development. I specialize in Full-Stack development with JavaScript technologies, React, NextJS, NodeJS, Express and NestJS. I have experience in managing SQL and NoSQL databases, such as MySQL, PostgreSQL, SQL Server and MongoDB. I also master version control with Git and GitHub, the use of Microsoft Azure cloud and agile methodologies such as Scrum. I consider myself a proactive, creative and quality-oriented professional. I highlight my teamwork and my interest in learning new things and facing new challenges.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Maracaibo",
+      "countryCode": "VE",
+      "region": "Zulia"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "Larry Segundo Finol Bohórquez",
+        "url": "https://linkedin.com/in/larry-segundo-finol-bohórquez-a4408a211"
+      },
+      {
+        "network": "GitHub",
+        "username": "larrysfinolb",
+        "url": "https://github.com/larrysfinolb"
+      },
+      {
+        "network": "X",
+        "username": "@larrysfinolb",
+        "url": "https://twitter.com/larrysfinolb"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Freelancer",
+      "position": "Full-Stack Developer",
+      "url": "",
+      "startDate": "2022-02-01",
+      "endDate": null,
+      "summary": "Freelance developer in different projects, among them the frontend development of an administrative system stands out.",
+      "highlights": []
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Organization",
+      "position": "Volunteer",
+      "url": "https://organization.com/",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
+      "summary": "Description…",
+      "highlights": ["Awarded 'Volunteer of the Month'"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Dr. Rafael Belloso Chacín Private University",
+      "url": "https://www.urbe.edu/",
+      "area": "Software Engineering",
+      "studyType": "Engineering",
+      "startDate": "2019-08-01",
+      "endDate": "2023-12-01",
+      "score": "18.60",
+      "courses": []
+    },
+    {
+      "institution": "Platzi",
+      "url": "https://platzi.com/",
+      "area": "Full-Stack Development",
+      "studyType": "",
+      "startDate": "2022-02-01",
+      "endDate": "2023-02-01",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Award",
+      "date": "2014-11-01",
+      "awarder": "Company",
+      "summary": "There is no spoon."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certificate",
+      "date": "2021-11-07",
+      "issuer": "Company",
+      "url": "https://certificate.com"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Publication",
+      "publisher": "Company",
+      "releaseDate": "2014-10-01",
+      "url": "https://publication.com",
+      "summary": "Description…"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Development",
+      "level": "Master",
+      "keywords": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Svelte"]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Master",
+      "keywords": ["Node.js", "Express", "NestJS", "GraphQL", "PostgreSQL", "MySQL", "SQL Server", "MongoDB"]
+    },
+    {
+      "name": "Tools",
+      "level": "Master",
+      "keywords": ["Git", "GitHub", "Scrum", "Azure", "Figma"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "B1"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": ["Ferrets", "Unicorns"]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "Description...",
+      "highlights": ["Won award at AIHacks 2016"],
+      "url": "https://project.com/",
+      "isActive": true,
+      "github": ""
+    }
+  ]
+}
